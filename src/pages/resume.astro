@@ -1,0 +1,270 @@
+---
+import Layout from "../layouts/layout.astro";
+
+const experience = [
+  {
+    title: "Senior Data & Analytics Engineer / Team Lead",
+    company: "Current Employer",
+    dates: "Present",
+    description:
+      "Lead data and analytics development while supporting business intelligence platforms, data transformation, automation, and technical operations.",
+    highlights: [
+      "Develop and maintain SQL- and Python-based data transformations, validation, and reconciliation processes.",
+      "Administer and support enterprise business intelligence environments and data workflows.",
+      "Lead technical work across development, testing, and production environments.",
+      "Collaborate with stakeholders to troubleshoot data, reporting, and integration issues."
+    ]
+  }
+];
+
+const education = [
+  {
+    school: "Seton Hall University",
+    degree: "B.S. Computer Science",
+    details: "Certificate in Data Analytics & Visualization · Minor in Applied Scientific Mathematics",
+    date: "May 2019"
+  }
+];
+
+const skills = {
+  "Languages & Querying": ["SQL", "Python", "PowerShell", "Bash"],
+  "Data & Platforms": [
+    "GCP",
+    "BigQuery",
+    "DB2",
+    "Oracle",
+    "PostgreSQL",
+    "DataStage"
+  ],
+  "Business Intelligence": [
+    "Cognos Analytics",
+    "Planning Analytics",
+    "MicroStrategy"
+  ],
+  "Engineering": [
+    "ETL / ELT",
+    "Data Modeling",
+    "Data Quality",
+    "Git",
+    "Linux",
+    "Windows"
+  ]
+};
+---
+
+<Layout
+  title="Resume | Garrett Denton"
+  description="Resume of Garrett Denton, a data and analytics engineering professional."
+>
+  <div class="container">
+    <header class="page-header">
+      <p class="eyebrow">RESUME</p>
+      <h1>Garrett Denton</h1>
+      <p class="subtitle">Data Engineering & Business Intelligence</p>
+
+      <div class="actions">
+        <a href="/" class="secondary-link">← Back to Home</a>
+        <!-- We'll add your PDF here later. -->
+      </div>
+    </header>
+
+    <section>
+      <h2>Professional Summary</h2>
+
+      <p>
+        Data and analytics engineering professional with experience building and
+        supporting data transformations, business intelligence systems,
+        automation, and enterprise analytics workflows. Focused on expanding
+        into modern data engineering, cloud data platforms, orchestration, and
+        MLOps.
+      </p>
+    </section>
+
+    <section>
+      <h2>Experience</h2>
+
+      {experience.map((role) => (
+        <article class="experience">
+          <div class="experience-header">
+            <div>
+              <h3>{role.title}</h3>
+              <p class="company">{role.company}</p>
+            </div>
+
+            <span class="dates">{role.dates}</span>
+          </div>
+
+          <p>{role.description}</p>
+
+          <ul>
+            {role.highlights.map((highlight) => <li>{highlight}</li>)}
+          </ul>
+        </article>
+      ))}
+    </section>
+
+    <section>
+      <h2>Education</h2>
+
+      {education.map((item) => (
+        <article class="education">
+          <h3>{item.school}</h3>
+          <p>{item.degree}</p>
+          <p>{item.details}</p>
+          <span class="dates">{item.date}</span>
+        </article>
+      ))}
+    </section>
+
+    <section>
+      <h2>Technical Skills</h2>
+
+      <div class="skill-groups">
+        {Object.entries(skills).map(([category, items]) => (
+          <div class="skill-group">
+            <h3>{category}</h3>
+
+            <div class="skills">
+              {items.map((skill) => <span>{skill}</span>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .container {
+    width: min(900px, calc(100% - 3rem));
+    margin: 0 auto;
+    padding: 5rem 0;
+  }
+
+  .page-header {
+    margin-bottom: 4rem;
+  }
+
+  .eyebrow {
+    margin: 0 0 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(2.75rem, 7vw, 4.75rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  .subtitle {
+    margin: 1rem 0 0;
+    font-size: 1.35rem;
+    color: #4b5563;
+  }
+
+  .actions {
+    margin-top: 1.5rem;
+  }
+
+  .secondary-link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  section {
+    margin-bottom: 4rem;
+  }
+
+  section > h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+  }
+
+  .experience {
+    padding-bottom: 2.5rem;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .experience:last-child {
+    margin-bottom: 0;
+  }
+
+  .experience-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1.15rem;
+  }
+
+  .company {
+    margin: 0.25rem 0 0;
+    color: #4b5563;
+  }
+
+  .dates {
+    flex-shrink: 0;
+    color: #6b7280;
+  }
+
+  ul {
+    padding-left: 1.25rem;
+  }
+
+  li + li {
+    margin-top: 0.5rem;
+  }
+
+  .education {
+    position: relative;
+  }
+
+  .education p {
+    margin: 0.3rem 0;
+  }
+
+  .skill-groups {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .skill-group h3 {
+    margin-bottom: 0.75rem;
+  }
+
+  .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+
+  .skills span {
+    padding: 0.45rem 0.7rem;
+    border: 1px solid #d1d5db;
+    border-radius: 999px;
+    background: white;
+  }
+
+  @media (max-width: 600px) {
+    .container {
+      width: min(100% - 2rem, 900px);
+      padding: 3rem 0;
+    }
+
+    .experience-header {
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .dates {
+      order: -1;
+    }
+  }
+</style>
